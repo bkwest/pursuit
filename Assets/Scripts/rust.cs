@@ -15,9 +15,10 @@ public class rust : MonoBehaviour {
 		transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed*Time.deltaTime);
 	}
 
-	void OnCollisionEnter2D(Collision2D other) 
+	void OnTriggerEnter2D(Collider2D other) 
 	{
-		if(other.gameObject == player)
+		Debug.Log (other.gameObject.name);
+		if(other.gameObject == player || other.gameObject.name == "conifer")
 		{
 			DestroyObject(gameObject);
 			Destroy(this);
