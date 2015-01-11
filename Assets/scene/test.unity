@@ -863,7 +863,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blackScreen: {fileID: 1293953496}
-  credits: {fileID: 0}
+  credits: {fileID: 100000, guid: 4359483eaacadcf428fd8fed42ffffba, type: 2}
   trueRate: 10
 --- !u!1001 &86978924
 Prefab:
