@@ -8,9 +8,9 @@ public class enemy : MonoBehaviour {
 	private Vector3 direction;
 	private bool directionFlip = false;
 	private float t = 0.0f;
-	private float a = 5.0f;
 	private bool stopMoving = false;
 	private float orginX;
+	private float stayOrGoCounter = 2.0f;
 
 	// Use this for initialization
 	void Start () {
@@ -29,12 +29,34 @@ public class enemy : MonoBehaviour {
 			//transform.position = Vector3.MoveTowards(transform.position, destination, speed*Time.deltaTime);
 			transform.Translate (direction * speed * Time.deltaTime);
 		}
-
-		if(directionFlip)
+		else
 		{
-			//direction.x = a * Mathf.Cos (t * Mathf.Rad2Deg);
-			//direction.y = a * Mathf.Sin (t * Mathf.Rad2Deg);
+			if(stayOrGoCounter % 50 == 0)//time to choose
+			{
+				int rand = Random.Range(0, 3);//they leave
+				Debug.Log(rand);
+				if(rand == 1)
+				{
+					direction.y = -2;
+					direction.x = 0;
+					stopMoving = false;
+				}
+				else if(rand == 0)//they come back for more
+				{
+					direction = player.transform.position;
+					stopMoving = false;
+				}
+				else//they stay
+				{
+					//do nothing
+				}
+				stayOrGoCounter = 0.0f;//set to 0 so that the next line sets it to 1, and so it doesnt do the next if statement
+			}
+			stayOrGoCounter++;
+		}
 
+		if(directionFlip && !stopMoving && stayOrGoCounter != 1.0f)//makes the enemies do a curve to below the player and wait
+		{
 			direction.x = -0.25f* (Mathf.Pow(t-2, 2) - 4);
 			if(orginX > 0)
 			{
@@ -42,11 +64,6 @@ public class enemy : MonoBehaviour {
 			}
 
 			direction.y = -1 * (Mathf.Sin((t-2)/1.4f) + 1);
-
-			if(transform.position.y < -50)
-			{
-				stopMoving = true;
-			}
 
 			if(t < 6)//was 4
 			{
@@ -56,6 +73,13 @@ public class enemy : MonoBehaviour {
 			{
 				stopMoving = true;
 			}
+		}
+
+		if(transform.position.y < -9)//kills them when they go out of screen in the y direction
+		{
+			//Debug.Log("destroied");
+			DestroyObject(gameObject);
+			Destroy(this);
 		}
 
 	}
