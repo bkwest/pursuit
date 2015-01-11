@@ -44,7 +44,7 @@ public class enemySpawner : MonoBehaviour {
 			//do stuff
 			//*************instantiate enemy***************************todo
 
-			if (on % 4 == 0){
+			if (on % 2 == 0){
 
 				float randomAngle;
 				if (Random.value > 0.5f){

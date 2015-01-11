@@ -18,14 +18,15 @@ public class scrollRoad : MonoBehaviour {
 
 	void Update () 
 	{
-		if(roadTriggeredFlag == 1.0f)//when the road hits the trigger, it should go back to the top
+		if(transform.position.y <= -9.5f)//when the road hits the trigger, it should go back to the top roadTriggeredFlag == 1.0f
 		{
-			transform.position = foreverStart + Vector3.up * 10;
+			transform.position = new Vector3(transform.position.x,12.5f);
 		}
 		else
 		{
-			float newPosition = Mathf.Repeat(Time.deltaTime * scrollSpeed, tileSizeZ);
-			transform.position = startPosition + Vector3.down * newPosition;
+			transform.position = new Vector3(transform.position.x,transform.position.y - Time.deltaTime * scrollSpeed);
+			//float newPosition = Mathf.Repeat(Time.deltaTime * scrollSpeed, tileSizeZ);
+			//transform.position = startPosition + Vector3.down * newPosition;
 		}
 		startPosition = transform.position;
 	}
