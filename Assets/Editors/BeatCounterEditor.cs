@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿/*using UnityEngine;
 using UnityEditor;
 using System.Collections;
 using SynchronizerData;
@@ -38,4 +38,4 @@ public class BeatCounterEditor : Editor {
 		//EditorGUIUtility.LookLikeControls();
 	}
 	
-}
+}*/

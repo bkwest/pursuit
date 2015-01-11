@@ -10,7 +10,7 @@ public class enemySpawner : MonoBehaviour {
 	private float off;
 	private float on;
 
-	private Object currEnemy = null;
+	//private Object currEnemy = null;
 	public GameObject player;
 	public GameObject enemyToSpawn;
 	// Use this for initialization
@@ -68,7 +68,8 @@ public class enemySpawner : MonoBehaviour {
 				//RaycastHit2D direction = Physics2D.Raycast(player.transform.position, dir);
 				//direction.point(0.3f) or direction.GetPoint (0.3f)
 				Ray direction = new Ray(player.transform.position, dir);
-				currEnemy = Instantiate (enemyToSpawn, direction.GetPoint (10.3f), Quaternion.identity);//Euler(-rcamX, rcamY-540, 0));
+				Instantiate (enemyToSpawn, direction.GetPoint (10.3f), Quaternion.identity);//Euler(-rcamX, rcamY-540, 0));
+				//currEnemy = 
 				//((GameObject)currEnemy).transform.localScale += new Vector3(0.111f, -0.04f, 0.0f);
 			}
 			//Debug.Log(on);

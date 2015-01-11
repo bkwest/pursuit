@@ -49,7 +49,7 @@ public class PlayerScript : MonoBehaviour {
 
 	public void makeArc(float angle)//one arc facing right = 0degrees, width=0.3 and height=0.55
 	{
-		float size = 12.0f;//degrees of one arc
+		//float size = 12.0f;//degrees of one arc
 
 		//Object theForce = Instantiate(projectile, transform.position, Quaternion.Euler(0, 0, angle));
 		//((GameObject)theForce).rigidbody2D.velocity = currentSwipe * projSpeed;//sends the arc in the direction we want at a specified speed
@@ -120,7 +120,7 @@ public class PlayerScript : MonoBehaviour {
 		if (mouseDown == true) {
 			secondPressPos = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
 			float swipeDist = Vector2.Distance(firstPressPos,secondPressPos);
-			Debug.Log("SD: " + swipeDist);
+			//Debug.Log("SD: " + swipeDist);
 			if (swipeDist > swipeThreshold){
 
 				currentSwipe = new Vector3(secondPressPos.x - firstPressPos.x, secondPressPos.y - firstPressPos.y);
