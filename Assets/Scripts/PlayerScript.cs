@@ -14,6 +14,8 @@ public class PlayerScript : MonoBehaviour {
 	private Vector2 firstPressPos;
 	private Vector2 secondPressPos;
 	private Vector2 currentSwipe;
+	private bool mouseDown = false;
+	private float swipeTime;
 
 	public static Swipe swipeDirection;
 
@@ -85,31 +87,46 @@ public class PlayerScript : MonoBehaviour {
             swipeDirection = Swipe.None;   
         }
 
+		if (mouseDown == true) {
+			secondPressPos = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+
+			if (Vector2.Distance(firstPressPos,secondPressPos) > 0.5f){
+				currentSwipe = new Vector3(secondPressPos.x - firstPressPos.x, secondPressPos.y - firstPressPos.y);
+				
+				currentSwipe.Normalize();
+				
+				// Swipe up
+				if (currentSwipe.y > 0 && currentSwipe.x > -0.5f && currentSwipe.x < 0.5f) {
+					swipeDirection = Swipe.Up;
+					// Swipe down
+				} else if (currentSwipe.y < 0 && currentSwipe.x > -0.5f && currentSwipe.x < 0.5f) {
+					swipeDirection = Swipe.Down;
+					// Swipe left
+				} else if (currentSwipe.x < 0 && currentSwipe.y > -0.5f && currentSwipe.y < 0.5f) {
+					swipeDirection = Swipe.Left;
+					// Swipe right
+				} else if (currentSwipe.x > 0 && currentSwipe.y > -0.5f && currentSwipe.y < 0.5f) {
+					swipeDirection = Swipe.Right;
+				}
+				mouseDown = false;
+			}else if (Time.time - swipeTime > 0.1f){
+				mouseDown = false;
+			}
+
+		}
+
 		//same thing as above but with mouse press
 		if(Input.GetMouseButtonDown(0))
 		{
 			firstPressPos = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+			mouseDown = true;
+			swipeTime = Time.time;
+			Debug.Log("mouse down");
 		}
 		if(Input.GetMouseButtonUp(0))
 		{
-			secondPressPos = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-			currentSwipe = new Vector3(secondPressPos.x - firstPressPos.x, secondPressPos.y - firstPressPos.y);
-			
-			currentSwipe.Normalize();
-			
-			// Swipe up
-			if (currentSwipe.y > 0 && currentSwipe.x > -0.5f && currentSwipe.x < 0.5f) {
-				swipeDirection = Swipe.Up;
-				// Swipe down
-			} else if (currentSwipe.y < 0 && currentSwipe.x > -0.5f && currentSwipe.x < 0.5f) {
-				swipeDirection = Swipe.Down;
-				// Swipe left
-			} else if (currentSwipe.x < 0 && currentSwipe.y > -0.5f && currentSwipe.y < 0.5f) {
-				swipeDirection = Swipe.Left;
-				// Swipe right
-			} else if (currentSwipe.x > 0 && currentSwipe.y > -0.5f && currentSwipe.y < 0.5f) {
-				swipeDirection = Swipe.Right;
-			}
+			mouseDown = false;
+			Debug.Log("mouse up");
 		}
     }
 

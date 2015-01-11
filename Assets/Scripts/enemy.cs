@@ -5,16 +5,23 @@ public class enemy : MonoBehaviour {
 
 	public GameObject player;
 	private float speed = 5.0f; // move speed
-	private Vector3 destination;
+	private Vector3 direction;
 
 	// Use this for initialization
 	void Start () {
-		destination = player.transform.position;
+		Vector3 heading;
+		heading = player.transform.position - transform.position;
+		float distance;
+		distance = heading.magnitude;
+		direction = heading / distance;
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		transform.position = Vector3.MoveTowards(transform.position, destination, speed*Time.deltaTime);
+
+		//transform.position = Vector3.MoveTowards(transform.position, destination, speed*Time.deltaTime);
+		transform.Translate (direction * speed * Time.deltaTime);
 	}
 
 
@@ -29,7 +36,7 @@ public class enemy : MonoBehaviour {
 		}*/
 		if (other.gameObject.tag == "sheildArc"){
 			Debug.Log("hit");
-			destination = new Vector3(-100,-100);
+			direction = direction * -1;
 		}
 	}
 }

@@ -4,7 +4,7 @@ using System.Collections;
 public class arcShieldScript : MonoBehaviour {
 
 	private Vector3 startPosition;
-	public float lifeSpanDist = 10f;
+	public float lifeSpanDist = 1.0f;
 
 	void Start () {
 		startPosition = transform.position;
@@ -14,6 +14,7 @@ public class arcShieldScript : MonoBehaviour {
 	void Update () {
 		Vector3 distanceTraveled = transform.position - startPosition;
 		float distTraveled = distanceTraveled.magnitude;
+		Debug.Log (distTraveled);
 		if(distTraveled >= lifeSpanDist)
 		{
 			DestroyObject(gameObject);
