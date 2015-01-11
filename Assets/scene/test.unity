@@ -779,8 +779,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a52bcf4c96ecc942b23740557781100, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bpm: 112.800003
-  startDelay: 1.5
+  bpm: 94
+  startDelay: .100000001
 --- !u!82 &81675618
 AudioSource:
   m_ObjectHideFlags: 0
@@ -793,7 +793,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: .800000012
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Priority: 128
   DopplerLevel: 1
@@ -863,7 +863,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blackScreen: {fileID: 1293953496}
-  duration: 1
+  trueRate: 10
 --- !u!1001 &86978924
 Prefab:
   m_ObjectHideFlags: 0
