@@ -6,6 +6,7 @@ public class enemy : MonoBehaviour {
 	public GameObject player;
 	private float speed = 5.0f; // move speed
 	private Vector3 direction;
+	private bool directionFlip = false;
 
 	// Use this for initialization
 	void Start () {
@@ -26,7 +27,7 @@ public class enemy : MonoBehaviour {
 
 
 
-	void OnCollisionEnter2D(Collision2D other) 
+	void OnTriggerEnter2D(Collider2D other) 
 	{
 		Debug.Log (other.gameObject.name);
 		/*if(other.gameObject == player || other.gameObject.name == "conifer")
@@ -34,9 +35,10 @@ public class enemy : MonoBehaviour {
 			DestroyObject(gameObject);
 			Destroy(this);
 		}*/
-		if (other.gameObject.tag == "sheildArc"){
+		if (directionFlip == false && other.gameObject.tag == "sheildArc"){
 			Debug.Log("hit");
 			direction = direction * -1;
+			directionFlip = true;
 		}
 	}
 }

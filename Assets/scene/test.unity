@@ -112,7 +112,7 @@ AudioSource:
   m_GameObject: {fileID: 81675616}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: 44d46119d8baaed4a9a8ab3d7b6b0654, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 002e4081b5a85cb468324764f6258f6d, type: 3}
   m_PlayOnAwake: 0
   m_Volume: .800000012
   m_Pitch: 1
@@ -212,7 +212,7 @@ SpriteRenderer:
   m_SortingLayerID: 2834673157
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 58a0831d16d154043bc74cf72b42eb73, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
 --- !u!4 &440164662
 Transform:
   m_ObjectHideFlags: 0
@@ -603,11 +603,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 1097224344}
   - 212: {fileID: 1097224343}
-  - 61: {fileID: 1097224345}
-  - 114: {fileID: 1097224348}
-  - 50: {fileID: 1097224346}
+  - 114: {fileID: 1097224346}
+  - 58: {fileID: 1097224345}
   m_Layer: 9
-  m_Name: conifer
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -634,7 +633,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 2125136017
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 07093fd3c65171940bf35d644544f77b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f7573f119b986204b8900f3dad1ba6bb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &1097224344
 Transform:
@@ -648,35 +647,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
---- !u!61 &1097224345
-BoxCollider2D:
+--- !u!58 &1097224345
+CircleCollider2D:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6100000, guid: 9882a0f36504442468dc52ab03aca84b,
-    type: 2}
-  m_PrefabInternal: {fileID: 2147440383}
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1097224342}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Size: {x: 3, y: 6}
-  m_Center: {x: 0, y: -1}
---- !u!50 &1097224346
-Rigidbody2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 5000000, guid: 9882a0f36504442468dc52ab03aca84b,
-    type: 2}
-  m_PrefabInternal: {fileID: 2147440383}
-  m_GameObject: {fileID: 1097224342}
-  m_Mass: 10
-  m_LinearDrag: 0
-  m_AngularDrag: .0500000007
-  m_GravityScale: 0
-  m_FixedAngle: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
---- !u!114 &1097224348
+  m_IsTrigger: 0
+  m_Radius: 1.89999998
+  m_Center: {x: 0, y: 0}
+--- !u!114 &1097224346
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 11400000, guid: 9882a0f36504442468dc52ab03aca84b,
@@ -689,11 +671,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 100000, guid: 10b5bd211f5cf094a99578a1a95d4aef, type: 2}
-  pushRate: .5
+  pushRate: .25
   projSpeed: 10
+  swipeThreshold: 13.5900002
   howManyArcs: 15
-  arcTheta: 45
-  minSwipeLength: 200
+  arcTheta: 60
+  minSwipeLength: 50
 --- !u!1001 &1219402060
 Prefab:
   m_ObjectHideFlags: 0
@@ -1022,6 +1005,18 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 21200000, guid: 50faabceb2de5a148aa29202985d67cb, type: 2}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 21200000, guid: 50faabceb2de5a148aa29202985d67cb, type: 2}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 21200000, guid: 50faabceb2de5a148aa29202985d67cb, type: 2}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50faabceb2de5a148aa29202985d67cb, type: 2}
   m_RootGameObject: {fileID: 440164660}
@@ -1326,15 +1321,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 11400000, guid: 9882a0f36504442468dc52ab03aca84b, type: 2}
+    - target: {fileID: 0}
       propertyPath: arcTheta
       value: 45
       objectReference: {fileID: 0}
-    - target: {fileID: 11400000, guid: 9882a0f36504442468dc52ab03aca84b, type: 2}
+    - target: {fileID: 0}
       propertyPath: projSpeed
       value: 10
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6100000, guid: 9882a0f36504442468dc52ab03aca84b, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 9882a0f36504442468dc52ab03aca84b, type: 2}
   m_RootGameObject: {fileID: 1097224342}
   m_IsPrefabParent: 0

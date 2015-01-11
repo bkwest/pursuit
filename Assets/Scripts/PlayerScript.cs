@@ -9,6 +9,7 @@ public class PlayerScript : MonoBehaviour {
 	public float pushRate = 0.25f;//how often you can swipe
 	public float projSpeed = 3.0f;
 	private float nextPush = 0.0f;
+	public float swipeThreshold = 2.0f;
 
 	public int howManyArcs = 15;
 	public float arcTheta = 60.0f;//degrees
@@ -118,8 +119,10 @@ public class PlayerScript : MonoBehaviour {
 
 		if (mouseDown == true) {
 			secondPressPos = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+			float swipeDist = Vector2.Distance(firstPressPos,secondPressPos);
+			Debug.Log("SD: " + swipeDist);
+			if (swipeDist > swipeThreshold){
 
-			if (Vector2.Distance(firstPressPos,secondPressPos) > 0.5f){
 				currentSwipe = new Vector3(secondPressPos.x - firstPressPos.x, secondPressPos.y - firstPressPos.y);
 				
 				currentSwipe.Normalize();
@@ -150,12 +153,12 @@ public class PlayerScript : MonoBehaviour {
 			firstPressPos = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
 			mouseDown = true;
 			swipeTime = Time.time;
-			Debug.Log("mouse down");
+			//Debug.Log("mouse down");
 		}
 		if(Input.GetMouseButtonUp(0))
 		{
 			mouseDown = false;
-			Debug.Log("mouse up");
+			//Debug.Log("mouse up");
 		}
     }
 
