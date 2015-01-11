@@ -3,11 +3,11 @@ using System.Collections;
 
 public class arcShieldScript : MonoBehaviour {
 
-	private Vector3 startPosition;
+	//private Vector3 startPosition;
 	public float lifeSpanDist = 25f;//was 10
 
 	void Start () {
-		startPosition = transform.position;
+		//startPosition = transform.position;
 	}
 	
 	// Update is called once per frame

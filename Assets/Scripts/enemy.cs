@@ -14,24 +14,24 @@ public class enemy : MonoBehaviour {
 	private float stayOrGoCounter = 2.0f;
 	private bool passive = true;  //if the enemy is just minding it's own business.
 	private bool look = false;  //whether the enemy wants to look at the player.
-	private float on = 0;
+	//private float on = 0;
 
-	private BeatObserver beatObserver;
+	//private BeatObserver beatObserver;
 
 	// Use this for initialization
 	void Start () {
 		direction = Vector3.down;
 		orginX = direction.x;
 
-		beatObserver = GetComponent<BeatObserver>();
+		//beatObserver = GetComponent<BeatObserver>();
 
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (passive) {//for the beginning
-			float rval = Random.value;
-			Debug.Log(rval);
+			//float rval = Random.value;
+			//Debug.Log(rval);
 			if (Random.value > 0.995f && transform.position.y > 3.0f) {
 				passive = false;
 				aimForPlayer();
@@ -53,7 +53,7 @@ public class enemy : MonoBehaviour {
 			if(stayOrGoCounter % 50 == 0)//time to choose
 			{
 				int rand = Random.Range(0, 3);//0, 1, or 2
-				Debug.Log(rand);
+				//Debug.Log(rand);
 				if(rand == 1)//they leave
 				{
 					direction.y = -2;
