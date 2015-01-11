@@ -690,7 +690,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 100000, guid: 10b5bd211f5cf094a99578a1a95d4aef, type: 2}
   pushRate: .5
-  projSpeed: 3
+  projSpeed: 10
+  howManyArcs: 15
+  arcTheta: 45
   minSwipeLength: 200
 --- !u!1001 &1219402060
 Prefab:
@@ -1323,6 +1325,14 @@ Prefab:
     - target: {fileID: 400000, guid: 9882a0f36504442468dc52ab03aca84b, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 9882a0f36504442468dc52ab03aca84b, type: 2}
+      propertyPath: arcTheta
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 9882a0f36504442468dc52ab03aca84b, type: 2}
+      propertyPath: projSpeed
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9882a0f36504442468dc52ab03aca84b, type: 2}

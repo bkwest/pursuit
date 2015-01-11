@@ -54,7 +54,7 @@ PolygonCollider2D:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Poly:
     m_Paths:
     - - {x: 1.00999999, y: .280000001}
@@ -74,7 +74,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1aa0e1e7d3e44d444b288ed3b35d4f05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeSpanDist: 10
+  lifeSpanDist: 25
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

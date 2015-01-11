@@ -10,6 +10,9 @@ public class PlayerScript : MonoBehaviour {
 	public float projSpeed = 3.0f;
 	private float nextPush = 0.0f;
 
+	public int howManyArcs = 15;
+	public float arcTheta = 60.0f;//degrees
+
 	public float minSwipeLength = 50f;
 	private Vector2 firstPressPos;
 	private Vector2 secondPressPos;
@@ -37,11 +40,37 @@ public class PlayerScript : MonoBehaviour {
 				{
 					angle = 360 - angle;
 				}
-				Object theForce = Instantiate(projectile, transform.position, Quaternion.Euler(0, 0, angle));
-				((GameObject)theForce).rigidbody2D.velocity = currentSwipe * projSpeed;//sends the arc in the direction we want at a specified speed
+				makeArc(angle);
 				swipeDirection = Swipe.None;
 			}
 		}
+	}
+
+	public void makeArc(float angle)//one arc facing right = 0degrees, width=0.3 and height=0.55
+	{
+		float size = 12.0f;//degrees of one arc
+
+		//Object theForce = Instantiate(projectile, transform.position, Quaternion.Euler(0, 0, angle));
+		//((GameObject)theForce).rigidbody2D.velocity = currentSwipe * projSpeed;//sends the arc in the direction we want at a specified speed
+
+		//int howManyArcs = (int)Mathf.Ceil(arcTheta / size);
+		angle += (arcTheta / 2);
+		for(int i = 0; i < howManyArcs; i++)//s = r0
+		{
+			angle -= ((arcTheta/howManyArcs));
+
+			Object theForce = Instantiate(projectile, transform.position, Quaternion.Euler(0, 0, angle));
+			float x = Mathf.Cos(Mathf.Deg2Rad * angle);
+			float y = Mathf.Sin(Mathf.Deg2Rad * angle);
+			Vector2 currentDir = new Vector2(x, y);
+			((GameObject)theForce).rigidbody2D.velocity = currentDir * projSpeed;//sends the arc in the direction we want at a specified speed
+
+		}
+
+		/* Test for size of one arc
+		 * float x = ((GameObject)theForce).collider2D.bounds.max.x - ((GameObject)theForce).collider2D.bounds.min.x;
+		float y = ((GameObject)theForce).collider2D.bounds.max.y - ((GameObject)theForce).collider2D.bounds.min.y;
+		Debug.Log ("X width: " + x + " | Y height: " + y);*/
 	}
 
 	public void DetectSwipe()
