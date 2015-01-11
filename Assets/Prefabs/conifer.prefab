@@ -70,6 +70,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 100000, guid: 10b5bd211f5cf094a99578a1a95d4aef, type: 2}
   pushRate: .5
+  projSpeed: 5
+  arcTheta: 45
   minSwipeLength: 200
 --- !u!212 &21200000
 SpriteRenderer:
