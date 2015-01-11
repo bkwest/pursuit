@@ -29,14 +29,14 @@ public class enemy : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other) 
 	{
-		Debug.Log (other.gameObject.name);
+		//Debug.Log (other.gameObject.name);
 		/*if(other.gameObject == player || other.gameObject.name == "conifer")
 		{
 			DestroyObject(gameObject);
 			Destroy(this);
 		}*/
 		if (directionFlip == false && other.gameObject.tag == "sheildArc"){
-			Debug.Log("hit");
+			//Debug.Log("hit");
 			direction = direction * -1;
 			directionFlip = true;
 		}

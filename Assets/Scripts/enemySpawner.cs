@@ -45,7 +45,14 @@ public class enemySpawner : MonoBehaviour {
 			//*************instantiate enemy***************************todo
 
 			if (on % 4 == 0){
-				float randomAngle = Random.Range ( 0, 2 * Mathf.PI ); //0 degrees to 360 degrees
+
+				float randomAngle;
+				if (Random.value > 0.5f){
+					randomAngle = Random.Range ( 0.25f * Mathf.PI, 0.44f * Mathf.PI ); //45 degrees to ~80 degrees
+				}else{
+					randomAngle = Random.Range ( 0.56f * Mathf.PI, 0.75f * Mathf.PI ); //~100 degrees to 135 degrees
+				}
+
 				float radius = 2.0f;
 				//Calculating the raycast direction
 	      		Vector3 dir = new Vector3(
