@@ -29,7 +29,7 @@ public class enemy : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (passive) {
+		if (passive) {//for the beginning
 			float rval = Random.value;
 			Debug.Log(rval);
 			if (Random.value > 0.995f && transform.position.y > 3.0f) {
@@ -39,7 +39,7 @@ public class enemy : MonoBehaviour {
 
 
 		}
-		if(!stopMoving)
+		if(!stopMoving)//for normal movement
 		{
 			//transform.position = Vector3.MoveTowards(transform.position, destination, speed*Time.deltaTime);
 			transform.Translate (Vector3.down * speed * Time.deltaTime);
@@ -52,9 +52,9 @@ public class enemy : MonoBehaviour {
 		{
 			if(stayOrGoCounter % 50 == 0)//time to choose
 			{
-				int rand = Random.Range(0, 3);//they leave
+				int rand = Random.Range(0, 3);//0, 1, or 2
 				Debug.Log(rand);
-				if(rand == 1)
+				if(rand == 1)//they leave
 				{
 					direction.y = -2;
 					direction.x = 0;
@@ -95,7 +95,13 @@ public class enemy : MonoBehaviour {
 			}
 		}
 
-		if(transform.position.y < -9)//kills them when they go out of screen in the y direction
+		if(transform.position.y < -9)//kills them when they go out of screen in the -y direction
+		{
+			//Debug.Log("destroied");
+			DestroyObject(gameObject);
+			Destroy(this);
+		}
+		if(directionFlip && transform.position.y > 10)//kills them when they go out of screen in the +y direction
 		{
 			//Debug.Log("destroied");
 			DestroyObject(gameObject);
